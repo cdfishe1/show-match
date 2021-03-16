@@ -32,6 +32,24 @@ const getTmdb = (keyword) => {
   .then(function (data) {
     console.log(data);
 
+    for (let i = 0; i <= data.results.length; i++) {
+      const titleEl = document.createElement('h2')
+      const showImageEl = document.createElement('img');
+      showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${data.results[i].poster_path}`);
+      showImageEl.setAttribute('alt', `${data.results[i].title}`);
+      const dateEl = document.createElement('p');
+      const summaryEl = document.createElement('p');
+  
+      titleEl.innerHTML = data.results[i].title;
+      dateEl.innerHTML = data.results[i].release_date;
+      summaryEl.innerHTML = data.results[i].overview;
+  
+      results.append(titleEl);
+      results.append(showImageEl);
+      results.append(dateEl);
+      results.append(summaryEl);
+    }
+
   
 });
 };
