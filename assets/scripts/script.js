@@ -6,3 +6,19 @@ const submitBtn = document.querySelector('#submitBtn');
 const submitBtnTmdb = document.querySelector('#submitBtnTmdb');
 const showType = document.querySelector('#showType');
 const results = document.querySelector('#results');
+
+const getTmdb = () => {
+  const getTmdbConfig = `https://api.themoviedb.org/3/configuration?api_key=${tmdbKey}`;
+
+  fetch(getTmdbConfig)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+  })
+
+  
+};
+
+getTmdb();
