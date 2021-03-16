@@ -9,6 +9,7 @@ const results = document.querySelector('#results');
 
 const getTmdb = () => {
   const getTmdbConfig = `https://api.themoviedb.org/3/configuration?api_key=${tmdbKey}`;
+  const tmdbKeyword = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbKey}&language=en-US&query=${keyword}&page=1&include_adult=false`;
 
   fetch(getTmdbConfig)
   .then(function (response) {
@@ -18,7 +19,15 @@ const getTmdb = () => {
     console.log(data);
   })
 
+  fetch(tmdbKeyword)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+
   
+});
 };
 
 getTmdb();
