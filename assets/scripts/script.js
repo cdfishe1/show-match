@@ -7,7 +7,13 @@ const submitBtnTmdb = document.querySelector('#submitBtnTmdb');
 const showType = document.querySelector('#showType');
 const results = document.querySelector('#results');
 
-const getTmdb = () => {
+submitBtnTmdb.addEventListener('click', function(event) {
+  event.preventDefault();
+  let tmdbKeyword = keywordTmdb.value.trim();
+  getTmdb(tmdbKeyword);
+})
+
+const getTmdb = (keyword) => {
   const getTmdbConfig = `https://api.themoviedb.org/3/configuration?api_key=${tmdbKey}`;
   const tmdbKeyword = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbKey}&language=en-US&query=${keyword}&page=1&include_adult=false`;
 
@@ -30,4 +36,4 @@ const getTmdb = () => {
 });
 };
 
-getTmdb();
+// getTmdb();
