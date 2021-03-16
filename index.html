@@ -4,46 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    
-    <title>Show Match</title>
+    <title>API test</title>
 </head>
 <body>
-    <header> 
-
-    <h1> Show Match </h1>
-
-
+    <header>
+        <h1>Let's test the TMDB Api!</h1>
     </header>
-    
-    <p> Fun times </p>
-    <p> This is a test </p>
 
-    <h5>Are we having fun yet?</h5>
+    <main>
+        <section id='searchTmdb'>
+            <header>
+                <h1>Let's test the TMDB Api!</h1>
+            </header>
+            <label for="keyword">Keyword:</label><br>
+            <input type="text" id="keywordTmdb" name="keyword"><br>
+            <label for="year">Year</label><br>
+            <input type="text" id="yearTmdb" name="year"><br>
+            <label for="showType">Type of show:</label><br>
+            <select name="showType" id="showTypeTmdb">
+            <option value="movie">Movie</option>
+            <option value="series">Series</option>
+            <option value="episode">Episode</option>
+            </select>
+            <button id='submitBtnTmdb'>Submit</button>
+        </section>
 
-            
-    <section id="work-container">
-        <div class="about-me-container">
-
-            <!-- PICTURE INSIDE about me container" --->
-            <!-- <a href=""> <img src=""
-                    alt=""> </a> -->
-            <!--about me text-->
-            <div class="work-text">
-
-                <div class="search-container">
-                    <form action="/action_page.php">
-                      <input type="text" placeholder="Search.." name="search">
-                      <button type="submit"><i class="fa fa-search"></i></button>
-
-                <p>Does this work </p>
-                <p>Done </p>
-                <!-- <p>Hello, My name is Javiann finish intro here about all things super</p>
-            <p>If you have any questions contact me</p>
-            button------- -->
-            </div>
-        </div>
-        <script src="./assets/scripts/script.js"></script>
+    <section id='results'></section>
+    </main>
+    <script src="./assets/scripts/script.js"></script>
 </body>
 </html>
