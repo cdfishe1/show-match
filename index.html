@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
     <title>API test</title>
 </head>
 <body>
@@ -18,21 +23,25 @@
             </header>
             <label for="keyword">Keyword:</label><br>
             <input type="text" id="keywordTmdb" name="keyword"><br>
-            <label for="year">Year</label><br>
-            <input type="text" id="yearTmdb" name="year"><br>
-            <label for="showType">Type of show:</label><br>
-            <select name="showType" id="showTypeTmdb">
-            <option value="movie">Movie</option>
-            <option value="series">Series</option>
-            <option value="episode">Episode</option>
-            </select>
+            <!-- <label for="year">Year</label><br>
+            <input type="text" id="yearTmdb" name="year"><br> -->
+            <div id="refineSearch" class="type-refine">
+                <label for="showType">Type of show:</label><br>
+                <select name="showType" id="showType" class="show-type">
+                <option value="selectType">Select Movie or Tv</option>
+                <option value="movie">Movie</option>
+                <option value="tv">Tv</option>
+                </select>
+            </div>
+            
             <button id='submitBtnTmdb'>Submit</button>
         </section>
 
     <section id='results'></section>
+    <section id='modalTest'></section>
     </main>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./assets/scripts/script.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
