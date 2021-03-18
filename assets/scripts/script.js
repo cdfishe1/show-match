@@ -75,24 +75,3 @@ const searchTv = tv => {
   }
 };
 
-//display results of tv shows to dom
-const displayTv = display => {
-  const titleEl = document.createElement('h2')
-  const showImageEl = document.createElement('img');
-  showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
-  showImageEl.setAttribute('alt', `${display.name}`);
-  const beginDateEl = document.createElement('p');
-  const endDateEl = document.createElement('p');
-  const summaryEl = document.createElement('p');
-
-  titleEl.innerHTML = display.name;
-  beginDateEl.innerHTML = display.first_air_date;
-  endDateEl.innerHTML = display.last_air_date;
-  summaryEl.innerHTML = display.overview;
-
-  results.append(titleEl);
-  results.append(showImageEl);
-  results.append(beginDateEl);
-  results.append(endDateEl);
-  results.append(summaryEl);
-};
