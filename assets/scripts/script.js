@@ -95,3 +95,24 @@ const searchMovies = movies => {
   
 };
 
+//display results of movies to dom
+const displayMovies = display => {
+  const titleEl = document.createElement('h2')
+  const showImageEl = document.createElement('img');
+  showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
+  showImageEl.setAttribute('alt', `${display.title}`);
+  const dateEl = document.createElement('p');
+  const summaryEl = document.createElement('p');
+
+  titleEl.innerHTML = display.title;
+  dateEl.innerHTML = display.release_date;
+  summaryEl.innerHTML = display.overview;
+
+  results.append(titleEl);
+  results.append(showImageEl);
+  results.append(dateEl);
+  results.append(summaryEl);
+
+    // refineResults(display);
+
+};
