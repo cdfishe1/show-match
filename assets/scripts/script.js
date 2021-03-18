@@ -24,9 +24,11 @@ const fetchConfig = () => {
 
 fetchConfig();
 
+//submit button for searh bar
 submitBtnTmdb.addEventListener('click', function(event) {
   event.preventDefault();
   let tmdbKeyword = keywordTmdb.value.trim();
+  refineType.style.display = 'initial';
   getTmdb(tmdbKeyword);
 })
 
