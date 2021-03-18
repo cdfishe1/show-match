@@ -75,6 +75,7 @@ const searchTv = tv => {
   }
 };
 
+
 //fetch the movies query
 const searchMovies = movies => {
 
@@ -93,3 +94,4 @@ const searchMovies = movies => {
   }
   
 };
+
