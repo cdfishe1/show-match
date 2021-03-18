@@ -6,7 +6,7 @@ const title = document.querySelector('#title');
 const year = document.querySelector('#year');
 const submitBtn = document.querySelector('#submitBtn');
 const submitBtnTmdb = document.querySelector('#submitBtnTmdb');
-const refineType = document.querySelector('#refineSearch');
+const refineSearch = document.querySelector('#refineSearch');
 const showType = document.querySelector('#showType');
 const results = document.querySelector('#results');
 
@@ -28,7 +28,7 @@ fetchConfig();
 submitBtnTmdb.addEventListener('click', function(event) {
   event.preventDefault();
   let tmdbKeyword = keywordTmdb.value.trim();
-  refineType.style.display = 'initial';
+  refineSearch.style.display = 'initial';
   getTmdb(tmdbKeyword);
 })
 
