@@ -24,64 +24,34 @@ const fetchConfig = () => {
 
 fetchConfig();
 
+//submit button for searh bar
 submitBtnTmdb.addEventListener('click', function(event) {
   event.preventDefault();
   let tmdbKeyword = keywordTmdb.value.trim();
+  refineType.style.display = 'initial';
   getTmdb(tmdbKeyword);
 })
 
-const getTmdb = (keyword) => {
-  const getTmdbConfig = `https://api.themoviedb.org/3/configuration?api_key=${tmdbKey}`;
+//send value of input bar to the tmdb multi search query and fetch it
+const getTmdb = keyword => {
   const tmdbKeyword = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbKey}&language=en-US&query=${keyword}&page=1&include_adult=false`;
-
-  fetch(getTmdbConfig)
-  .then(function (response) {
-    return response.json();
-  })
-  .then(function (data) {
-    console.log(data);
-  })
 
   fetch(tmdbKeyword)
   .then(function (response) {
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
+    // console.log(data);
+    let tvResults = [];
+    let movieResults = [];
 
-    for (let i = 0; i <= data.results.length; i++) {
-      const titleEl = document.createElement('h2')
-      const showImageEl = document.createElement('img');
-      showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${data.results[i].poster_path}`);
-      showImageEl.setAttribute('alt', `${data.results[i].title}`);
-      const dateEl = document.createElement('p');
-      const summaryEl = document.createElement('p');
-  
-      titleEl.innerHTML = data.results[i].title;
-      dateEl.innerHTML = data.results[i].release_date;
-      summaryEl.innerHTML = data.results[i].overview;
-  
-      results.append(titleEl);
-      results.append(showImageEl);
-      results.append(dateEl);
-      results.append(summaryEl);
+    for (let i = 0; i <= data.results.length - 1; i++) {
+      if (data.results[i].media_type === 'movie') {
+        movieResults.push(data.results[i]);
+      } else if (data.results[i].media_type === 'tv') {
+        tvResults.push(data.results[i]);
+    } 
     }
 
-  
-});
-};
-
-//fetch the tv query
-const searchTv = tv => {
-  for (let i = 0; i <= tv.length - 1; i++) {
-    let fetchTv = `https://api.themoviedb.org/3/tv/${tv[i].id}?api_key=${tmdbKey}&language=en-US`;
-    fetch(fetchTv)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      displayTv(data);
-    })
-  }
-};
+    searchMovies(movieResults);
+    searchTv(tvResults);
