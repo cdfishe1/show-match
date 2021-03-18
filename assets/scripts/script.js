@@ -75,3 +75,21 @@ const searchTv = tv => {
   }
 };
 
+//fetch the movies query
+const searchMovies = movies => {
+
+  // let moviesForDisplay = []
+  for (let i = 0; i <= movies.length - 1; i++) {
+    let fetchMovies = `https://api.themoviedb.org/3/movie/${movies[i].id}?api_key=${tmdbKey}&language=en-US`;
+    fetch(fetchMovies)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      displayMovies(data);
+      
+    })
+  }
+  
+};
