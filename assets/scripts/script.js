@@ -10,6 +10,20 @@ const refineType = document.querySelector('#refineSearch');
 const showType = document.querySelector('#showType');
 const results = document.querySelector('#results');
 
+// fetch tmdb config file
+const fetchConfig = () => {
+  const getTmdbConfig = `https://api.themoviedb.org/3/configuration?api_key=${tmdbKey}`;
+  fetch(getTmdbConfig)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+})
+};
+
+fetchConfig();
+
 submitBtnTmdb.addEventListener('click', function(event) {
   event.preventDefault();
   let tmdbKeyword = keywordTmdb.value.trim();
