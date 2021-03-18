@@ -55,3 +55,7 @@ const getTmdb = keyword => {
 
     searchMovies(movieResults);
     searchTv(tvResults);
+
+  })
+
+};
