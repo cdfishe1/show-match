@@ -59,3 +59,18 @@ const getTmdb = keyword => {
   })
 
 };
+
+//fetch the tv query
+const searchTv = tv => {
+  for (let i = 0; i <= tv.length - 1; i++) {
+    let fetchTv = `https://api.themoviedb.org/3/tv/${tv[i].id}?api_key=${tmdbKey}&language=en-US`;
+    fetch(fetchTv)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      displayTv(data);
+    })
+  }
+};
