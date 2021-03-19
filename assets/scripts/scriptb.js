@@ -31,7 +31,7 @@ fetchConfig();
 submitBtnTmdb.addEventListener('click', function(event) {
   event.preventDefault();
   let tmdbKeyword = keywordTmdb.value.trim();
-  refineType.style.display = 'initial';
+  // refineType.style.display = 'initial';
   getTmdb(tmdbKeyword);
 })
 
