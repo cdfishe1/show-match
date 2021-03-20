@@ -33,15 +33,12 @@ const fetchConfig = () => {
 fetchConfig();
 
 //submit button for searh bar
-//submit button for searh bar
 submitBtnTmdb.addEventListener('click', function(event) {
     event.preventDefault();
     let tmdbKeyword = keywordTmdb.value.trim();
   
-      // Create local storage for previous searched cities
+      // Create local storage for previous searched titles, deDupes them, and sorts them
       storedSearches.push(tmdbKeyword);
-      //This method returns the storedCities array as a new array with unique cities.
-      //I used the following article to help me understand this:  https://www.javascripttutorial.net/array/javascript-remove-duplicates-from-array/
       let deDupedSearches = [...new Set(storedSearches)];
       deDupedSearches.sort();
       localStorage.setItem('searches', JSON.stringify(deDupedSearches));
@@ -58,7 +55,7 @@ const getTmdb = keyword => {
     return response.json();
   })
   .then(function (data) {
-    // console.log(data);
+
     let tvResults = [];
     let movieResults = [];
 
@@ -118,9 +115,6 @@ const searchMovies = movies => {
 
 //display results of movies to dom
 const displayMovies = display => {
-  // if (moviesContainer !== null) {
-  //   moviesContainer.innerHTML = '';
-  // };
 
   const cardBoxEl = document.createElement('div');
   cardBoxEl.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6');
@@ -147,9 +141,6 @@ const displayMovies = display => {
   cardIconEl.setAttribute('class', 'fa fa-eye');
   
   const titleEl = document.createElement('h2')
-  
-  // const dateEl = document.createElement('p');
-  // const summaryEl = document.createElement('p');
 
   titleEl.innerHTML = display.title;
   taglineEl.innerHTML = display.overview;
@@ -191,7 +182,7 @@ const displayTv = display => {
   const showImageEl = document.createElement('img');
   showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
   showImageEl.setAttribute('alt', `${display.title}`);
-  // showImageEl.setAttribute('class', 'w-100 custom-size-img');
+  showImageEl.setAttribute('class', 'w-100 custom-size-img');
   showImageEl.style.width = '300px';
   showImageEl.style.height = 'auto';
   const taglineEl = document.createElement('p');
