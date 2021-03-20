@@ -1,6 +1,6 @@
 //variables
 
-const omdbKey = '1c14b455';
+
 const tmdbKey = '94406989928ec2b2df604a84ef1604a1';
 const title = document.querySelector('#title');
 const year = document.querySelector('#year');
@@ -27,7 +27,7 @@ const fetchConfig = () => {
     return response.json();
   })
   .then(function (data) {
-    console.log(data);
+    
 })
 };
 
@@ -62,7 +62,7 @@ const getTmdb = keyword => {
     let tvResults = [];
     let movieResults = [];
 
-    console.log(data.results);
+    
     for (let i = 0; i <= data.results.length - 1; i++) {
       if (data.results[i].media_type === 'movie') {
         movieResults.push(data.results[i]);
@@ -90,7 +90,7 @@ const searchTv = tv => {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      
       displayTv(data);
     })
   }
@@ -107,7 +107,7 @@ const searchMovies = movies => {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      
       displayMovies(data);
       
     })
@@ -122,7 +122,7 @@ const displayMovies = display => {
   const cardBoxEl = document.createElement('div');
   cardBoxEl.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6');
   const cardArticleEl = document.createElement('article');
-  cardArticleEl.setAttribute('class', 'card');
+  cardArticleEl.setAttribute('class', 'card mb-2');
   const cardHeaderEl = document.createElement('header');
   cardHeaderEl.setAttribute('class', 'title-header');
   const divCardBlockEl = document.createElement('div');
@@ -136,7 +136,7 @@ const displayMovies = display => {
   showImageEl.style.width = '300px';
   showImageEl.style.height = 'auto';
   const taglineEl = document.createElement('p');
-  taglineEl.setAttribute('class', 'tagline card-text text-xs-center');
+  taglineEl.setAttribute('class', 'tagline card-text text-xs-center px-1 py-1');
   const watchNowEl = document.createElement('button');
   watchNowEl.setAttribute('data-title', display.title)
   watchNowEl.setAttribute('class', 'btn btn-primary btn-block youtube-router');
@@ -175,7 +175,7 @@ const displayTv = display => {
   const cardBoxEl = document.createElement('div');
   cardBoxEl.setAttribute('class', 'col-lg-4 col-md-6 col-sm-12');
   const cardArticleEl = document.createElement('article');
-  cardArticleEl.setAttribute('class', 'card');
+  cardArticleEl.setAttribute('class', 'card mb-2');
   const cardHeaderEl = document.createElement('header');
   cardHeaderEl.setAttribute('class', 'title-header');
   const divCardBlockEl = document.createElement('div');
@@ -189,12 +189,13 @@ const displayTv = display => {
   showImageEl.style.width = '300px';
   showImageEl.style.height = 'auto';
   const taglineEl = document.createElement('p');
-  taglineEl.setAttribute('class', 'tagline card-text text-xs-center');
+  taglineEl.setAttribute('class', 'tagline card-text text-xs-center px-1 py-1');
   const watchNowEl = document.createElement('button');
   watchNowEl.setAttribute('data-title', display.title);
   watchNowEl.setAttribute('class', 'btn btn-primary btn-block youtube-router');
   const cardIconEl = document.createElement('i');
   cardIconEl.setAttribute('class', 'fa fa-eye');
+  
   
   const titleEl = document.createElement('h2')
   
