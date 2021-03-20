@@ -120,7 +120,7 @@ const displayMovies = display => {
   // };
 
   const cardBoxEl = document.createElement('div');
-  cardBoxEl.setAttribute('class', 'col-lg-4 col-md-6 col-sm-12');
+  cardBoxEl.setAttribute('class', 'col-lg-3 col-md-4 col-sm-6');
   const cardArticleEl = document.createElement('article');
   cardArticleEl.setAttribute('class', 'card');
   const cardHeaderEl = document.createElement('header');
@@ -132,7 +132,7 @@ const displayMovies = display => {
   const showImageEl = document.createElement('img');
   showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
   showImageEl.setAttribute('alt', `${display.title}`);
-  // showImageEl.setAttribute('class', 'w-100 custom-size-img');
+  showImageEl.setAttribute('class', 'w-100 custom-size-img');
   showImageEl.style.width = '300px';
   showImageEl.style.height = 'auto';
   const taglineEl = document.createElement('p');
