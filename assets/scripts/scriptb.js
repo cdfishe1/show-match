@@ -12,6 +12,11 @@ const results = document.querySelector('#results');
 const moviesContainer = document.querySelector('moviesContainer');
 const movieSection = document.querySelector('#movies');
 const movieCardBoxes = document.querySelector('#movieCardBoxes');
+const tvContainer = document.querySelector('#tvContainer');
+const tvSection = document.querySelector('#tv');
+const tvCardBoxes = document.querySelector('#tvCardBoxes');
+const pageSubmenu = document.querySelector('#pageSubmenu');
+const storedSearches = JSON.parse(localStorage.getItem("searches")) || [];
 
 // fetch tmdb config file
 const fetchConfig = () => {
@@ -27,11 +32,21 @@ const fetchConfig = () => {
 
 fetchConfig();
 
+
+//send value of input bar to the tmdb multi search query and fetch it
 //submit button for searh bar
 submitBtnTmdb.addEventListener('click', function(event) {
   event.preventDefault();
-  let tmdbKeyword = keywordTmdb.value.trim();
-  // refineType.style.display = 'initial';
+  let tmdbKeyword = submitBtnTmdb.value.trim();
+
+    // Create local storage for previous searched cities
+    storedSearches.push(tmdbKeyword);
+    //This method returns the storedCities array as a new array with unique cities.
+    //I used the following article to help me understand this:  https://www.javascripttutorial.net/array/javascript-remove-duplicates-from-array/
+    let deDupedSearches = [...new Set(storedSearches)];
+    deDupedSearches.sort();
+    localStorage.setItem('searches', JSON.stringify(deDupedSearches));
+
   getTmdb(tmdbKeyword);
 })
 
@@ -44,7 +59,7 @@ const getTmdb = keyword => {
     return response.json();
   })
   .then(function (data) {
-    // console.log(data);
+    console.log(data);
     let tvResults = [];
     let movieResults = [];
 
@@ -100,8 +115,12 @@ const searchMovies = movies => {
 
 //display results of movies to dom
 const displayMovies = display => {
+  // if (moviesContainer !== null) {
+  //   moviesContainer.innerHTML = '';
+  // };
+
   const cardBoxEl = document.createElement('div');
-  cardBoxEl.setAttribute('class', 'col-lg-6 col-md-4 col-sm-6');
+  cardBoxEl.setAttribute('class', 'col-lg-4 col-md-6 col-sm-12');
   const cardArticleEl = document.createElement('article');
   cardArticleEl.setAttribute('class', 'card');
   const cardHeaderEl = document.createElement('header');
@@ -124,7 +143,7 @@ const displayMovies = display => {
   const cardIconEl = document.createElement('i');
   cardIconEl.setAttribute('class', 'fa fa-eye');
   
-  const titleEl = document.createElement('h3')
+  const titleEl = document.createElement('h2')
   
   // const dateEl = document.createElement('p');
   // const summaryEl = document.createElement('p');
@@ -150,37 +169,89 @@ const displayMovies = display => {
   cardBoxEl.append(cardArticleEl);
   movieCardBoxes.append(cardBoxEl);
 
-
-  // dateEl.innerHTML = display.release_date;
-  // summaryEl.innerHTML = display.overview;
-
-  // results.append(titleEl);
-  // results.append(showImageEl);
-  // results.append(dateEl);
-  // results.append(summaryEl);
-
-    // refineResults(display);
-
 };
 
 //display results of tv shows to dom
 const displayTv = display => {
-  const titleEl = document.createElement('h2')
+  // if (tvContainer !== null) {
+  //   tvContainer.innerHTML = '';
+  // };
+
+  const cardBoxEl = document.createElement('div');
+  cardBoxEl.setAttribute('class', 'col-lg-4 col-md-6 col-sm-12');
+  const cardArticleEl = document.createElement('article');
+  cardArticleEl.setAttribute('class', 'card');
+  const cardHeaderEl = document.createElement('header');
+  cardHeaderEl.setAttribute('class', 'title-header');
+  const divCardBlockEl = document.createElement('div');
+  divCardBlockEl.setAttribute('class', 'card-block');
+  const imgCardEl = document.createElement('div');
+  imgCardEl.setAttribute('class', 'img-card');
   const showImageEl = document.createElement('img');
   showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
-  showImageEl.setAttribute('alt', `${display.name}`);
-  const beginDateEl = document.createElement('p');
-  const endDateEl = document.createElement('p');
-  const summaryEl = document.createElement('p');
+  showImageEl.setAttribute('alt', `${display.title}`);
+  // showImageEl.setAttribute('class', 'w-100 custom-size-img');
+  showImageEl.style.width = '300px';
+  showImageEl.style.height = 'auto';
+  const taglineEl = document.createElement('p');
+  taglineEl.setAttribute('class', 'tagline card-text text-xs-center');
+  const watchNowEl = document.createElement('a');
+  watchNowEl.setAttribute('href', '#');
+  watchNowEl.setAttribute('class', 'btn btn-primary btn-block');
+  const cardIconEl = document.createElement('i');
+  cardIconEl.setAttribute('class', 'fa fa-eye');
+  
+  const titleEl = document.createElement('h2')
+  
 
   titleEl.innerHTML = display.name;
-  beginDateEl.innerHTML = display.first_air_date;
-  endDateEl.innerHTML = display.last_air_date;
-  summaryEl.innerHTML = display.overview;
+  taglineEl.innerHTML = display.overview;
 
-  results.append(titleEl);
-  results.append(showImageEl);
-  results.append(beginDateEl);
-  results.append(endDateEl);
-  results.append(summaryEl);
+  cardHeaderEl.append(titleEl);
+  cardArticleEl.append(cardHeaderEl);
+  cardBoxEl.append(cardArticleEl);
+  tvCardBoxes.append(cardBoxEl);
+
+  watchNowEl.append(cardIconEl);
+  imgCardEl.append(showImageEl);
+  divCardBlockEl.append(imgCardEl);
+  divCardBlockEl.append(taglineEl);
+  divCardBlockEl.append(watchNowEl);
+
+  cardHeaderEl.append(titleEl);
+  cardArticleEl.append(cardHeaderEl);
+  cardArticleEl.append(divCardBlockEl);
+
+  cardBoxEl.append(cardArticleEl);
+  tvCardBoxes.append(cardBoxEl);
+
+  
 };
+
+//creates the list of previous searches and appends them to search history
+const storedSearchesList = () => {
+  storedSearches.forEach((search) => {
+    const searchListItem = document.createElement('li');
+    const searchItem = document.createElement('a');
+    searchItem.setAttribute('href', '#');
+    searchItem.setAttribute('class', 'search-item');
+
+    searchItem.innerHTML = search;
+    searchListItem.append(searchItem);
+    pageSubmenu.append(searchListItem);
+
+  })
+};
+
+storedSearchesList();
+
+//Creates the array of search history items and listens for clicks to reexecute the search
+const searchItemsList = document.getElementsByClassName('search-item');
+const searchItemsArray = Array.from(searchItemsList);
+
+searchItemsArray.forEach((item) => {
+  item.addEventListener('click', function() {
+    keywordTmdb.value = item.innerHTML;
+    submitBtnTmdb.click();
+  })
+})

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <title>API test</title>
+</head>
+<body>
+    <header>
+        <h1>Let's test the TMDB Api!</h1>
+    </header>
+
+    <main>
+        <section id='searchTmdb'>
+            <header>
+                <h1>Let's test the TMDB Api!</h1>
+            </header>
+            <label for="keyword">Keyword:</label><br>
+            <input type="text" id="keywordTmdb" name="keyword"><br>
+            <!-- <label for="year">Year</label><br>
+            <input type="text" id="yearTmdb" name="year"><br> -->
+            <div id="refineSearch" class="type-refine">
+                <label for="showType">Type of show:</label><br>
+                <select name="showType" id="showType" class="show-type">
+                <option value="selectType">Select Movie or Tv</option>
+                <option value="movie">Movie</option>
+                <option value="tv">Tv</option>
+                </select>
+            </div>
+            
+            <button id='submitBtnTmdb'>Submit</button>
+        </section>
+
+    <section id='results'></section>
+    <section id='modalTest'></section>
+    </main>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="./assets/scripts/script.js"></script>
+</body>
+</html>
