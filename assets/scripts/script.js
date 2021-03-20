@@ -9,7 +9,7 @@ const submitBtnTmdb = document.querySelector('#submitBtnTmdb');
 const refineType = document.querySelector('#refineSearch');
 const showType = document.querySelector('#showType');
 const results = document.querySelector('#results');
-const moviesContainer = document.querySelector('moviesContainer');
+const moviesContainer = document.querySelector('#moviesContainer');
 const movieSection = document.querySelector('#movies');
 const movieCardBoxes = document.querySelector('#movieCardBoxes');
 const tvContainer = document.querySelector('#tvContainer');
@@ -71,6 +71,9 @@ const getTmdb = keyword => {
     } 
     }
 
+    tvCardBoxes.innerHTML = '';
+    movieCardBoxes.innerHTML = '';
+  
     searchMovies(movieResults);
     searchTv(tvResults);
 
@@ -137,9 +140,9 @@ const displayMovies = display => {
   showImageEl.style.height = 'auto';
   const taglineEl = document.createElement('p');
   taglineEl.setAttribute('class', 'tagline card-text text-xs-center');
-  const watchNowEl = document.createElement('a');
-  watchNowEl.setAttribute('href', '#');
-  watchNowEl.setAttribute('class', 'btn btn-primary btn-block');
+  const watchNowEl = document.createElement('button');
+  watchNowEl.setAttribute('data-title', display.title)
+  watchNowEl.setAttribute('class', 'btn btn-primary btn-block youtube-router');
   const cardIconEl = document.createElement('i');
   cardIconEl.setAttribute('class', 'fa fa-eye');
   
@@ -173,9 +176,7 @@ const displayMovies = display => {
 
 //display results of tv shows to dom
 const displayTv = display => {
-  // if (tvContainer !== null) {
-  //   tvContainer.innerHTML = '';
-  // };
+ 
 
   const cardBoxEl = document.createElement('div');
   cardBoxEl.setAttribute('class', 'col-lg-4 col-md-6 col-sm-12');
@@ -195,9 +196,9 @@ const displayTv = display => {
   showImageEl.style.height = 'auto';
   const taglineEl = document.createElement('p');
   taglineEl.setAttribute('class', 'tagline card-text text-xs-center');
-  const watchNowEl = document.createElement('a');
-  watchNowEl.setAttribute('href', '#');
-  watchNowEl.setAttribute('class', 'btn btn-primary btn-block');
+  const watchNowEl = document.createElement('button');
+  watchNowEl.setAttribute('data-title', display.title);
+  watchNowEl.setAttribute('class', 'btn btn-primary btn-block youtube-router');
   const cardIconEl = document.createElement('i');
   cardIconEl.setAttribute('class', 'fa fa-eye');
   
