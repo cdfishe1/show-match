@@ -6,6 +6,7 @@ const title = document.querySelector('#title');
 const year = document.querySelector('#year');
 const submitBtn = document.querySelector('#submitBtn');
 const submitBtnTmdb = document.querySelector('#submitBtnTmdb');
+const btnClear = document.querySelector('#btnClear');
 const refineType = document.querySelector('#refineSearch');
 const showType = document.querySelector('#showType');
 const results = document.querySelector('#results');
@@ -46,7 +47,9 @@ submitBtnTmdb.addEventListener('click', function(event) {
     getTmdb(tmdbKeyword);
   })
 
+
 //send value of input bar to the tmdb multi search query and fetch it
+
 const getTmdb = keyword => {
   const tmdbKeyword = `https://api.themoviedb.org/3/search/multi?api_key=${tmdbKey}&language=en-US&query=${keyword}&page=1&include_adult=false`;
 
@@ -246,4 +249,8 @@ searchItemsArray.forEach((item) => {
     keywordTmdb.value = item.innerHTML;
     submitBtnTmdb.click();
   })
+})
+
+btnClear.addEventListener('click', function() {
+  localStorage.clear();
 })
