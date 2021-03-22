@@ -1,45 +1,114 @@
+[![Generic badge](https://img.shields.io/badge/license-MIT-<COLOR>.svg)](#license)
+![GitHub language count](https://img.shields.io/github/languages/count/cdfishe1/show-match)
+![GitHub top language](https://img.shields.io/github/languages/top/cdfishe1/show-match)
+
 # Show-Match
-https://cdfishe1.github.io/show-match/
-[Show Match](https://cdfishe1.github.io/show-match/)
 
-## Project Introduction
-Show-Match is built in two tow stages. 
-Stage 1 (current development) 
-The purpose of this development stage is to allow a user to search videos and tv shows.
-Then the user can watch tailers of the search results. 
-Then the user can decide which movie or show is the choice of entertainment.
+Show Match allows a user to search movies and tv shows, read a description, and then click a button to view a YouTube video.
 
-Stage 2 (future development):
-Two or more users can perform an individual search.
-Then the user can select the movies or TV Shows of interest.
-Then the App will compare the selection lists 
-Then the App will create a list of common selections.
-Then the users can decide on the movie / TV shows they want to watch together. 
+## Created by
+* [Charles Fisher](https://github.com/cdfishe1)
+* [Javian Marrero](https://github.com/javiistacks)
+* [Thomas Schmidt](https://github.com/Thomas-NW)
 
-## User Instructions
-The user enters a search criterion in tgit addhe search field.
-Then clicks on “search” or presses the enter key.
-A maximum of 20 viable search result will be displayed.
-Each individual search result includes a button to show a trailer of that movie. 
-When clicking the trailer button, a trailer will be displayed.
-Each search result will be stored, to enable the user to click on a stored search to review the search result.
+## Table of Contents
+* [User Story](#user-story)
+* [Show Match Demos](#show-match-demos)
+* [Deployment](#deployment)
+* [Development](#development)
+* [Directions for Future Development](#directions-for-future-development)
+* [Credits](#credits)
+* [Special Thanks](#special-thanks)
+* [License](#license)
+
+## User Story
+
+```
+AS A media consumer
+I WANT to learn more about movies and tv shows
+SO THAT I can watch a trailer of that show
+```
+
+## Acceptance Criteria
+
+```
+GIVEN a media search dashboard with form inputs
+WHEN I search for a movie or tv show
+THEN I am presented with a list of shows and that show is added to the search history
+WHEN I view a show
+THEN I am presented with the name, poster image, and summary of that show
+WHEN I click on the Watch Now button for a show
+THEN I am taken to a YouTube video trailer corresponding to that show
+WHEN I click on a search term in the search history
+THEN I am again presented with a list of shows for that search term
+```
+
+## Show Match Demos
+
+### Screencast on mobile
+![Screencast on mobile](assets/images/demo.gif)
 
 
-Incorrect entrance is displayed to inform the user that the search criteria is either not available or not a match. In this case the user will be requested to enter a new search criterion. 
+## Deployment
 
-## Development 
-The App includes two different search databases:
-1.	The Movie Database (TMDb)
-The Movie Database (TMDb) is a popular, user editable database for movies and TV shows.
-2.	YouTube
+Site deployed at [Show Match](https://cdfishe1.github.io/show-match/)
 
-The “TMDb” results are generated via Fetch. 
-The YouTube Trailer links are generated via ajax.
+## Development
 
-The App supports mobile application, using bootstrap.
+### We used two server side apis:
+* [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
+  * This API generates the results of the user search using the fetch() web api.
+* [YouTube API](https://developers.google.com/youtube/v3)
+  * This API generates the YouTube links using the ajax call method.
 
-## Thank you!
-A special thank you to Paul Cwik, who helped us with trouble shooting the code and improve performance. 
+### We used Pure.css and Bootstrap
+* [Pure.css](https://purecss.io/)
+  * Pure.css was used to generate the YouTube search buttons needed to overcome Bootstrap limitations
+* [Bootstrap](https://getbootstrap.com/)
+  * Bootstrap was used for layout and mobile responsivess
 
-# Project Compliance
+## Directions for Future Development
+
+* Multiple users will be able to perform a search.
+* They will be able to select and save their searches to remote storage.
+* The app will allow users to share their lists.
+* The app will compare the lists and return a list of common selections.
+* The users will be able to decide which shows they wish to view together based on this shared list.
+
+## Special Thanks
+
+* David Metcalf, bootcamp tutor, helped us understand how to use the checkValidity() method to help with form validation.
+* Paul Zwik, guest teaching assistant, who helped us understand how to loop through the YouTube buttons with the needed YouTube link.
+
+## License
+
+Copyright (c) Charles Fisher, Javiann Marerro, Thomas Schmidt All rights reserved.<br>
+Please be kind and change content if you wish to use this code.
+
+<details><summary>Licensed under the MIT License</summary>
+
+Copyright (c) 2021 - present | Charles Fisher, Javiann Marerro, Thomas Schmidt
+
+<blockquote>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</blockquote>
+</details>
+
+
 

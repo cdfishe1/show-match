@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Show Match</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/fonts/fontawesome-all.min.css">
@@ -51,12 +52,7 @@
             </li>
         </ul>
 
-        <div id="social-icons-sb" class="text-center">
-            <p class="text-muted text-center">Credits</p>
-            <a class="btn btn-social-icon btn-github" href="https://github.com/cdfishe1"> <i class="fab fab fa-github-square"></i></a>
-            <a class="btn btn-social-icon btn-github" href="https://github.com/javiistacks"> <i class="fab fab fa-github-square"></i></a>
-            <a class="btn btn-social-icon btn-github" href="https://github.com/Thomas-NW"> <i class="fab fab fa-github-square"></i></a>
-        </div>
+    
 
     </nav>
 
@@ -91,10 +87,28 @@
     <!-- Search Form -->
     <form class="search-form">
         <div class="input-group">
-            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input id="keywordTmdb" class="form-control" type="text" placeholder="Search for movies and tv shows">
-            <div id ='submitBtnTmdb' class="input-group-append"><button class="btn btn-light" type="button">Search </button></div>
+            <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input id="keywordTmdb" class="form-control" type="text" placeholder="Search for movies and tv shows" required>
+            <div id ='submitBtnTmdb' class="input-group-append"><button class="btn btn-primary" type="submit">Search </button></div>
         </div>
     </form>
+
+    <!-- Modal for empty searches -->
+
+    <div id ='emptySearch' class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+        <strong>Please enter a movie or tv show</strong> such as Star Wars or Queens Gambit
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    <!-- Modal for failed searches -->
+
+    <div id ='failedSearch' class="alert alert-warning alert-dismissible fade show custom-alert" role="alert">
+        <strong>We're sorry we could not find a show!</strong> try another search like Star Wars or Queen's Gambit
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
 <!-- Contains the results of the search -->
 <section id='results'>
@@ -119,12 +133,12 @@
                     <div class="col-md-6 col-lg-8 mx-auto">
                         <ul class="list-inline text-center">
                             <p class="text-muted text-center">Credits</p>
-                            <li class="list-inline-item"><a id="social-footer-icon-github" href="https://github.com/cdfishe1"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li>
-                            <li class="list-inline-item"><a id="social-footer-icon-github" href="https://github.com/javiistacks"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li>
-                            <li class="list-inline-item"><a id="social-footer-icon-github" href="https://github.com/Thomas-NW"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li>
+                            <li class="list-inline-item">Charles Fisher<a id="social-footer-icon-github" href="https://github.com/cdfishe1"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li>
+                            <li class="list-inline-item">Javiann Marrero<a id="social-footer-icon-github" href="https://github.com/javiistacks"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li>
+                            <li class="list-inline-item">Thomas Schmidt<a id="social-footer-icon-github" href="https://github.com/Thomas-NW"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fab fa-github fa-stack-1x fa-inverse"></i></span></a></li>
                         </ul>
                         <p class="copyright text-muted text-center">Powered by</p>
-                        <p class="text-muted text-center px-1"> <img id="powered-by" src="./assets/img/bs3.svg" alt= "TMDB logo"></p>
+                        <p class="text-muted text-center px-1"> <img id="powered-by" src="./assets/images/bs3.svg" alt= "TMDB logo"></p>
                     </div>
                 </div>
             </div>
@@ -134,7 +148,7 @@
 
 
     </div>
-</div><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+</div>
 
 
 
