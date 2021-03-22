@@ -16,6 +16,7 @@ Show Match allows a user to search movies and tv shows, read a description, and 
 * [Show Match Demos](#show-match-demos)
 * [Deployment](#deployment)
 * [Development](#development)
+* [Challenges and Successes](#challenges-and-successes)
 * [Directions for Future Development](#directions-for-future-development)
 * [Credits](#credits)
 * [Special Thanks](#special-thanks)
@@ -49,7 +50,7 @@ THEN I am again presented with a list of shows for that search term
 ![Screencast on wide screen](assets/images/wide-screen-demo.gif)
 
 ### Screencast on mobile
-![Screencast on mobile](assets/images/wide-screen-demo.gif)
+![Screencast on mobile](assets/images/mobile-screen-demo.gif)
 
 
 ## Deployment
@@ -69,6 +70,12 @@ Site deployed at [Show Match](https://cdfishe1.github.io/show-match/)
   * Pure.css was used to generate the YouTube search buttons needed to overcome Bootstrap limitations
 * [Bootstrap](https://getbootstrap.com/)
   * Bootstrap was used for layout and mobile responsivess
+
+## Challenges and Successes
+* Managing Git, pull requests, and dealing with conflicts was a challenge for all.
+* Working with different coding styles was sometimes a challenge, such as blending vanilla javascript with jQuery.
+* Pure.css helped with creating and managing the YouTube buttons without the conflicts created by Bootstrap styling.
+* Getting the javascript to interate through the YouTube buttons to point to appropriate videos was a great success!
 
 ## Directions for Future Development
 
