@@ -4,7 +4,8 @@
 const tmdbKey = '94406989928ec2b2df604a84ef1604a1';
 const title = document.querySelector('#title');
 const year = document.querySelector('#year');
-const submitBtn = document.querySelector('#submitBtn');
+const emptySearch = document.querySelector('#emptySearch');
+const keywordTmdb = document.querySelector('#keywordTmdb');
 const submitBtnTmdb = document.querySelector('#submitBtnTmdb');
 const btnClear = document.querySelector('#btnClear');
 const refineType = document.querySelector('#refineSearch');
@@ -34,18 +35,24 @@ const fetchConfig = () => {
 fetchConfig();
 
 //submit button for searh bar
-submitBtnTmdb.addEventListener('click', function(event) {
+
+submitBtnTmdb.addEventListener('click', function (event) {
+  const formValidator = keywordTmdb.checkValidity();
+  if (formValidator) {
     event.preventDefault();
     let tmdbKeyword = keywordTmdb.value.trim();
-  
-      // Create local storage for previous searched titles, deDupes them, and sorts them
-      storedSearches.push(tmdbKeyword);
-      let deDupedSearches = [...new Set(storedSearches)];
-      deDupedSearches.sort();
-      localStorage.setItem('searches', JSON.stringify(deDupedSearches));
-  
+    // Create local storage for previous searched titles, deDupes them, and sorts them
+    storedSearches.push(tmdbKeyword);
+    let deDupedSearches = [...new Set(storedSearches)];
+    deDupedSearches.sort();
+    localStorage.setItem('searches', JSON.stringify(deDupedSearches));
     getTmdb(tmdbKeyword);
-  })
+  } else {
+    emptySearch.style.display = 'initial';
+  }
+});
+
+
 
 
 //send value of input bar to the tmdb multi search query and fetch it
@@ -58,6 +65,10 @@ const getTmdb = keyword => {
     return response.json();
   })
   .then(function (data) {
+
+    if (data.results.length === 0) {
+      failedSearch.style.display = 'initial'
+    }
 
     let tvResults = [];
     let movieResults = [];
@@ -130,18 +141,24 @@ const displayMovies = display => {
   const imgCardEl = document.createElement('div');
   imgCardEl.setAttribute('class', 'img-card');
   const showImageEl = document.createElement('img');
-  showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
-  showImageEl.setAttribute('alt', `${display.title}`);
-  showImageEl.setAttribute('class', 'w-100 custom-size-img');
-  showImageEl.style.width = '300px';
-  showImageEl.style.height = 'auto';
+
+  if (display.poster_path !== null) {
+    showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
+    showImageEl.setAttribute('alt', `${display.title}`);
+    showImageEl.setAttribute('class', 'w-100 custom-size-img');
+  } else {
+    showImageEl.setAttribute('src', './assets/images/film-strip.jpg');
+    showImageEl.setAttribute('alt', 'Stock Film Strip')
+  }
+
   const taglineEl = document.createElement('p');
   taglineEl.setAttribute('class', 'tagline card-text text-xs-center px-1 py-1');
   const watchNowEl = document.createElement('button');
   watchNowEl.setAttribute('data-title', display.title)
-  watchNowEl.setAttribute('class', 'btn btn-primary btn-block youtube-router');
+  watchNowEl.setAttribute('class', 'pure-button pure-button-primary pure-button-active custom-button youtube-router');
+  watchNowEl.innerHTML = 'Watch Now';
   const cardIconEl = document.createElement('i');
-  cardIconEl.setAttribute('class', 'fa fa-eye');
+  cardIconEl.setAttribute('class', 'fab fa-youtube-square ml-2');
   
   const titleEl = document.createElement('h2')
 
@@ -183,18 +200,23 @@ const displayTv = display => {
   const imgCardEl = document.createElement('div');
   imgCardEl.setAttribute('class', 'img-card');
   const showImageEl = document.createElement('img');
-  showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
-  showImageEl.setAttribute('alt', `${display.title}`);
-  showImageEl.setAttribute('class', 'w-100 custom-size-img');
-  showImageEl.style.width = '300px';
-  showImageEl.style.height = 'auto';
+
+  if (display.poster_path !== null) {
+    showImageEl.setAttribute('src', `https://image.tmdb.org/t/p/w154${display.poster_path}`);
+    showImageEl.setAttribute('alt', `${display.title}`);
+    showImageEl.setAttribute('class', 'w-100 custom-size-img');
+  } else {
+    showImageEl.setAttribute('src', './assets/images/film-strip.jpg');
+    showImageEl.setAttribute('alt', 'Stock Film Strip')
+  }
+  
   const taglineEl = document.createElement('p');
   taglineEl.setAttribute('class', 'tagline card-text text-xs-center px-1 py-1');
   const watchNowEl = document.createElement('button');
-  watchNowEl.setAttribute('data-title', display.title);
-  watchNowEl.setAttribute('class', 'btn btn-primary btn-block youtube-router');
+  watchNowEl.setAttribute('class', 'pure-button pure-button-primary pure-button-active custom-button youtube-router');
+  watchNowEl.innerHTML = 'Watch Now';
   const cardIconEl = document.createElement('i');
-  cardIconEl.setAttribute('class', 'fa fa-eye');
+  cardIconEl.setAttribute('class', 'fab fa-youtube-square ml-2');
   
   
   const titleEl = document.createElement('h2')
