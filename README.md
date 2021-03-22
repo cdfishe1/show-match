@@ -45,8 +45,11 @@ THEN I am again presented with a list of shows for that search term
 
 ## Show Match Demos
 
+### Screencast on wide screen
+![Screencast on wide screen](assets/images/wide-screen-demo.gif)
+
 ### Screencast on mobile
-![Screencast on mobile](assets/images/demo.gif)
+![Screencast on mobile](assets/images/wide-screen-demo.gif)
 
 
 ## Deployment

@@ -48,7 +48,7 @@ submitBtnTmdb.addEventListener('click', function (event) {
     localStorage.setItem('searches', JSON.stringify(deDupedSearches));
     getTmdb(tmdbKeyword);
   } else {
-    emptySearch.style.display = 'initial';
+    emptySearch.style.display = 'inline-block';
   }
 });
 
@@ -67,7 +67,7 @@ const getTmdb = keyword => {
   .then(function (data) {
 
     if (data.results.length === 0) {
-      failedSearch.style.display = 'initial'
+      failedSearch.style.display = 'inline-block';
     }
 
     let tvResults = [];
