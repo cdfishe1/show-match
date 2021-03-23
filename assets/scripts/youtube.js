@@ -1,5 +1,7 @@
 var YOUR_API_KEY = "AIzaSyDuYx8N72Fgrlvv1uyeakRwNNeB6R7MM44";
 
+
+//function to make the ajax call to YouTube api
 async function gettrailer(movietitle) {
   const titleWithTrailerString = `${movietitle} official trailer`;
   console.log('trailerString: ' + titleWithTrailerString)
@@ -29,7 +31,7 @@ async function gettrailer(movietitle) {
   })
 };
 
-
+//Event listener for Youtube buttons
 $(document).on('click', '.youtube-router', function (e) {
   e.preventDefault();
   const desiredTitle = $(this).attr('data-title');

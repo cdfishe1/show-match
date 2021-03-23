@@ -8,7 +8,7 @@ Show Match allows a user to search movies and tv shows, read a description, and 
 
 ## Created by
 * [Charles Fisher](https://github.com/cdfishe1)
-* [Javian Marrero](https://github.com/javiistacks)
+* [Javiann Marrero](https://github.com/javiistacks)
 * [Thomas Schmidt](https://github.com/Thomas-NW)
 
 ## Table of Contents
