@@ -1,4 +1,4 @@
-var YOUR_API_KEY = "AIzaSyDuYx8N72Fgrlvv1uyeakRwNNeB6R7MM44";
+var YOUR_API_KEY = "AIzaSyDCLyAYzlwTSqm2iUw0s1KnyBEchn068Kw";
 
 async function gettrailer(movietitle) {
   const titleWithTrailerString = `${movietitle} official trailer`;
