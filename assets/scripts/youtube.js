@@ -7,12 +7,11 @@ async function gettrailer(movietitle) {
   console.log('trailerString: ' + titleWithTrailerString)
   const videoURL = await $.ajax({
     type: "GET",
+    //url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&eventType=none&order=relevance&q=${titleWithTrailerString}&key=${YOUR_API_KEY}`,
     url: `https://youtube.googleapis.com/youtube/v3/search?part=snippet&eventType=none&order=relevance&q=${titleWithTrailerString}&key=${YOUR_API_KEY}`,
     datatype: "json",
     Headers: { "Accept": "application/json" },
     success: function (data) {
-      console.log('full trailer data')
-      console.log(data);
       
       var filteredData = data.items.filter(item => {
         return item.id.kind == "youtube#video"
