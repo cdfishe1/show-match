@@ -274,6 +274,7 @@ searchItemsArray.forEach((item) => {
   })
 })
 
+//Creates eventlistner for clear button
 btnClear.addEventListener('click', function() {
   localStorage.clear();
 })
